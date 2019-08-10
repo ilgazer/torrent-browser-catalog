@@ -1,5 +1,5 @@
 function Http() {
-    this.BASE_URL = "http://192.168.0.26/gallery/json"
+    this.BASE_URL = "json"
 }
 
 Http.prototype.getTorrentList = function () {
