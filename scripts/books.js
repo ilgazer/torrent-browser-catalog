@@ -4,7 +4,7 @@ function PageScript() {
     console.log("asd");
     this.grid = document.getElementById("top-grid");
     this.http = new Http();
-    window.addEventListener("click",this.contractAll);
+    window.addEventListener("click",contractAll);
 
     this.http.getTorrentList().then(values => {
         console.log(values);
@@ -35,12 +35,13 @@ function PageScript() {
     });
 }
 
-PageScript.prototype.contractAll = function () {
+function contractAll () {
     Array.from(document.getElementsByClassName("mdl-cell--4-col"))
         .forEach(element => element.classList.replace("mdl-cell--4-col", "mdl-cell--2-col"))
-};
+}
+
 PageScript.prototype.onCardClick = function () {
-    this.contractAll();
+    contractAll();
     console.log(this);
     this.classList.replace("mdl-cell--2-col", "mdl-cell--4-col")
 };
