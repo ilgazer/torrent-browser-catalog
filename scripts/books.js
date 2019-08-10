@@ -30,18 +30,12 @@ function PageScript() {
         Array.from(this.cards).forEach(card => {
             console.log(card);
             card.addEventListener('focusin', this.onCardFocused);
-            card.addEventListener('blur', this.onCardBlurred)
+            card.addEventListener('focusout', this.onCardBlurred)
         });
-        document.addEventListener('focus', this.contractAll);
     });
 }
 
-PageScript.prototype.contractAll = function () {
-    Array.from(document.getElementsByClassName("mdl-cell--4-col"))
-        .forEach(element => element.classList.replace("mdl-cell--4-col", "mdl-cell--2-col"))
-};
 PageScript.prototype.onCardFocused = function () {
-    window.PageScript.contractAll();
     this.classList.replace("mdl-cell--2-col", "mdl-cell--4-col")
 };
 PageScript.prototype.onCardBlurred = function () {
