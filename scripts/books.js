@@ -30,7 +30,7 @@ function PageScript() {
         this.cards = document.getElementsByClassName("demo-card-square");
         Array.from(this.cards).forEach(card => {
             console.log(card);
-            card.addEventListener('click', this.onCardClick(), true);
+            card.addEventListener('click', this.onCardClick, true);
         });
     });
 }
