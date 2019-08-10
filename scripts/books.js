@@ -4,7 +4,6 @@ function PageScript() {
     console.log("asd");
     this.grid = document.getElementById("top-grid");
     this.http = new Http();
-    window.addEventListener("click",contractAll);
 
     this.http.getTorrentList().then(values => {
         console.log(values);
@@ -30,20 +29,19 @@ function PageScript() {
         this.cards = document.getElementsByClassName("demo-card-square");
         Array.from(this.cards).forEach(card => {
             console.log(card);
-            card.addEventListener('click', this.onCardClick, true);
+            card.addEventListener('focusin', this.onCardFocused);
+            card.addEventListener('blur', this.onCardBlurred)
         });
     });
 }
 
-function contractAll () {
+PageScript.prototype.onCardFocused = function () {
     Array.from(document.getElementsByClassName("mdl-cell--4-col"))
         .forEach(element => element.classList.replace("mdl-cell--4-col", "mdl-cell--2-col"))
-}
-
-PageScript.prototype.onCardClick = function () {
-    contractAll();
-    console.log(this);
     this.classList.replace("mdl-cell--2-col", "mdl-cell--4-col")
+};
+PageScript.prototype.onCardBlurred = function () {
+    this.classList.replace("mdl-cell--4-col", "mdl-cell--2-col")
 };
 
 PageScript.prototype.getFolderText = function (folder) {
