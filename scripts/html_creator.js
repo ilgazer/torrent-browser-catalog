@@ -20,7 +20,10 @@ function HtmlCreator() {
     const getSubfolder = function (folder) {
         if (folder.children.length > 0) {
             return `<div class="subfolder">
-                ${folder.children.map((file) => getFolderDiv(file)).reduce((a, b) => a + b)}
+                ${folder.children
+                    .sort((a, b) => a.name.localeCompare(b.name))
+                    .map((file) => getFolderDiv(file))
+                    .reduce((a, b) => a + b)}
             </div>`;
         } else {
             return "";
